@@ -22,50 +22,55 @@
       <p>以 MRT 藍線與昭披耶河交通船為主軸，避開市中心塞車路段，串聯百年老街咖啡廳、鄭王廟夕陽與唐人街米其林街頭小吃。</p>
     </header>
 
-    <!-- 區塊一：已確認行程時間軸 -->
+    <!-- 區塊一：機動行程時間軸（與區塊二、區塊三即時雙向連動） -->
     <section class="card-section" id="timeline-section">
-      <h2 class="section-title">🗺️ 區塊一：已確認行程時間軸</h2>
-      <p class="section-subtitle">依地理位置由北向南順向排列，點擊地圖按鈕即可直接開啟導航。</p>
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">🗺️ 區塊一：機動行程時間軸（即時連動）</h2>
+          <p class="section-subtitle">可直接修改時間（自動依時間先後重新排序）、編輯內容、增減行程，並與下方推薦池及預算表即時同步。</p>
+        </div>
+        <div class="timeline-toolbar">
+          <button type="button" class="btn-add-stop" id="toggle-add-stop-btn">＋ 手動新增行程</button>
+          <button type="button" class="btn-restore-timeline" id="restore-timeline-btn">↺ 還原預設行程</button>
+        </div>
+      </div>
 
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-meta">
-            <span class="time">10:30</span>
-            <span class="transport-pill">🚇 MRT Wat Mangkon 站步行 8 分鐘</span>
+      <!-- 手動新增行程節點表單 -->
+      <div class="timeline-add-box" id="timeline-add-box">
+        <h3>📍 新增自訂行程節點</h3>
+        <form id="timeline-add-form">
+          <div class="form-grid">
+            <input type="time" id="new-stop-time" class="form-input" required />
+            <input type="text" id="new-stop-title" class="form-input" placeholder="景點或餐廳名稱（必填）" required />
+            <input type="text" id="new-stop-transport" class="form-input" placeholder="交通方式（例：🚇 MRT 步行 5 分）" />
+            <input type="number" id="new-stop-cost" class="form-input" placeholder="預估花費 THB（例：200）" min="0" step="10" />
           </div>
+          <div class="form-grid">
+            <input type="text" id="new-stop-desc" class="form-input" placeholder="行程亮點、必點品項或備註說明" />
+          </div>
+          <button type="submit" class="btn-add-stop">加入時間軸並同步預算</button>
+        </form>
+      </div>
+
+      <div class="timeline" id="main-timeline">
+        <div class="timeline-item" data-time="10:30" data-transport="🚇 MRT Wat Mangkon 站步行 8 分鐘" data-cost="150">
           <h3>嵩越路 Song Wat Road 百年老街散步</h3>
           <p>曼谷近年最受矚目的文青老街，保留百年香料貿易商行建築，沿途聚集精品咖啡烘豆坊與河景選物店。</p>
-          <a href="https://www.google.com/maps/search/?api=1&query=Song+Wat+Road+Bangkok" target="_blank" rel="noopener" class="map-btn">🗺️ 在 Google Maps 開啟</a>
         </div>
 
-        <div class="timeline-item">
-          <div class="timeline-meta">
-            <span class="time">13:00</span>
-            <span class="transport-pill">🚶 沿老街步行 6 分鐘</span>
-          </div>
+        <div class="timeline-item" data-time="13:00" data-transport="🚶 沿老街步行 6 分鐘" data-cost="600">
           <h3>Rongros 河畔泰式料理（臥佛寺對岸景觀）</h3>
           <p>米其林推薦的河岸雙層餐廳，正對鄭王廟全景。必點鳳梨炒飯與酸辣烤豬頸肉，建議提前預約窗邊座位。</p>
-          <a href="https://www.google.com/maps/search/?api=1&query=Rongros+Bangkok" target="_blank" rel="noopener" class="map-btn">🗺️ 在 Google Maps 開啟</a>
         </div>
 
-        <div class="timeline-item">
-          <div class="timeline-meta">
-            <span class="time">15:30</span>
-            <span class="transport-pill">⛴️ Tha Tien 碼頭搭渡輪跨河 5 分鐘</span>
-          </div>
+        <div class="timeline-item" data-time="15:30" data-transport="⛴️ Tha Tien 碼頭搭渡輪跨河 5 分鐘" data-cost="0">
           <h3>鄭王廟 Wat Arun（黎明寺）</h3>
           <p>白色陶瓷鑲嵌的主塔高達 82 公尺，下午 3 點半後造訪可避開正午烈日，並一路欣賞夕陽餘暉與夜間點燈。</p>
-          <a href="https://www.google.com/maps/search/?api=1&query=Wat+Arun+Bangkok" target="_blank" rel="noopener" class="map-btn">🗺️ 在 Google Maps 開啟</a>
         </div>
 
-        <div class="timeline-item">
-          <div class="timeline-meta">
-            <span class="time">19:00</span>
-            <span class="transport-pill">🚇 MRT Sanam Chai 站搭 2 站至 Wat Mangkon</span>
-          </div>
+        <div class="timeline-item" data-time="19:00" data-transport="🚇 MRT Sanam Chai 站搭 2 站至 Wat Mangkon" data-cost="450">
           <h3>耀華力路 Yaowarat 唐人街夜市</h3>
           <p>曼谷最具代表性的霓虹燈美食街，沿街匯聚炭烤海鮮、胡椒豬雜粿汁與現烤爆漿餐包。</p>
-          <a href="https://www.google.com/maps/search/?api=1&query=Yaowarat+Road+Bangkok" target="_blank" rel="noopener" class="map-btn">🗺️ 在 Google Maps 開啟</a>
         </div>
       </div>
 
@@ -74,51 +79,77 @@
       </div>
     </section>
 
-    <!-- 區塊二：影音靈感候選池（IG Reels / YouTube 萃取） -->
+    <!-- 區塊二：影音自動爬蟲萃取與固定 3 卡推薦池 -->
     <section class="card-section" id="candidate-section">
-      <h2 class="section-title">📥 區塊二：影音靈感候選池（Reels / YT 探店萃取）</h2>
-      <p class="section-subtitle">由 AI 從社群短影音萃取出的口袋名單。你可以自行勾選「納入行程」，或點擊「＋ 手動貼入新影片」測試互動功能。</p>
+      <h2 class="section-title">📥 區塊二：影音靈感爬蟲萃取 ＆ 智慧推薦池</h2>
+      <p class="section-subtitle">上傳影片或貼上 IG Reels / YouTube 連結即可自動爬取景點；點擊「＋ 納入行程」將即時連動至上方區塊一時間軸與下方區塊三花費表。</p>
 
-      <div class="pool-toolbar">
-        <div class="pool-stats">
-          已納入行程：<span id="accepted-count">0</span> 間 ｜ 待審核：<span id="pending-count">4</span> 間
+      <!-- 1. 影音自動爬蟲輸入框 -->
+      <div class="crawler-box">
+        <div class="crawler-box-header">
+          <h3>🕷️ 影音自動爬蟲解析器（IG Reels / YouTube / 影片檔）</h3>
+          <div class="sample-links">
+            <button type="button" class="btn-sample" data-sample-url="https://www.instagram.com/reel/bangkok-crab-omelette-herehai/">點我測試：蟹肉炒飯 Reels</button>
+            <button type="button" class="btn-sample" data-sample-url="https://www.youtube.com/watch?v=bangkok-jodd-fairs-night-market">點我測試：夜市美食 YT</button>
+            <button type="button" class="btn-sample" data-sample-url="https://www.instagram.com/reel/bangkok-ari-cafe-hopping/">點我測試：文青咖啡廳 Reels</button>
+          </div>
         </div>
-        <div class="pool-btns">
-          <button type="button" class="btn-toggle-form" id="toggle-add-form-btn">＋ 貼入 Reels / YT 靈感</button>
-          <button type="button" class="btn-export" id="export-selected-btn">📋 複製已入選清單（給 AI 排程）</button>
-          <button type="button" class="btn-reset" id="reset-spots-btn">重設狀態</button>
+
+        <form id="crawler-form" class="crawler-input-group">
+          <input
+            type="text"
+            id="crawler-url-input"
+            class="crawler-url-input"
+            placeholder="貼上 IG Reels 或 YouTube 影片網址，系統將自動爬蟲解析片中景點..."
+            required
+          />
+          <label class="file-upload-label">
+            <span id="file-label-text">📁 或上傳影音檔</span>
+            <input type="file" id="crawler-file-input" accept="video/*,audio/*" />
+          </label>
+          <button type="submit" class="btn-crawl" id="btn-crawl-submit">🔍 自動爬取景點</button>
+        </form>
+
+        <div class="crawler-status" id="crawler-status">
+          <div id="crawler-status-text">正在啟動爬蟲解析影音資訊...</div>
+          <div class="progress-track">
+            <div class="progress-fill" id="crawler-progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="crawled-results-container" id="crawled-results-container">
+          <div class="crawled-results-title">✨ 爬蟲自影音中成功識別出以下景點（點擊「納入行程」即時同步至區塊一）：</div>
+          <div class="candidate-grid" id="crawled-results-grid"></div>
         </div>
       </div>
 
-      <!-- 前端即時模擬新增表單 -->
-      <div class="quick-add-box" id="quick-add-box">
-        <h3>🎬 新增 IG Reels / YouTube 探店候選卡片</h3>
-        <form id="quick-add-form">
-          <div class="form-row">
-            <input type="text" id="input-spot-name" class="form-input" placeholder="店家或景點名稱（必填）" required />
-            <input type="text" id="input-spot-area" class="form-input" placeholder="所屬商圈（例：通羅區 Thong Lo）" />
-            <select id="input-spot-source" class="form-select">
-              <option value="IG Reels">來源：IG Reels</option>
-              <option value="YouTube">來源：YouTube</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <input type="url" id="input-spot-url" class="form-input" placeholder="影片連結 https://...（選填）" />
-            <input type="text" id="input-spot-desc" class="form-input" placeholder="必點招牌菜或拍照亮點說明（必填）" required />
-          </div>
-          <button type="submit" class="btn-submit-spot">儲存至候選池</button>
-        </form>
+      <!-- 2. 已納入行程清單列（與區塊一雙向連動） -->
+      <div class="accepted-bar" id="accepted-spots-bar">
+        <div class="accepted-info">
+          <div class="accepted-info-title">📌 已從推薦／影音納入時間軸的景點（<span id="accepted-count">0</span> 間）：</div>
+          <div class="accepted-chips" id="accepted-chips"></div>
+        </div>
+        <div class="pool-btns">
+          <button type="button" class="btn-export" id="export-selected-btn">📋 複製完整即時行程</button>
+          <button type="button" class="btn-reset" id="reset-spots-btn">移除全部納入景點</button>
+        </div>
+      </div>
+
+      <!-- 3. 始終維持 3 個的系統推薦池 -->
+      <div class="rec-header">
+        <h3>✨ 系統智慧推薦（始終保持 3 個推薦名額）</h3>
+        <span class="rec-badge">點擊「✕ 略過」自動淡出遞補；點擊「＋ 納入行程」同步新增至區塊一</span>
       </div>
 
       <div class="candidate-grid" id="candidate-pool">
-        <article class="candidate-card" data-spot-id="spot-fv-songwat" data-spot-name="FV 泰式傳統甜點木造茶屋" data-spot-area="嵩越路 Song Wat">
+        <article class="candidate-card" data-spot-id="spot-fv-songwat" data-spot-name="FV 泰式傳統甜點木造茶屋" data-spot-area="嵩越路 Song Wat" data-cost="240">
           <div>
             <div class="candidate-top">
               <span class="source-badge ig">IG Reels</span>
               <a href="https://www.instagram.com/explore/tags/songwat/" target="_blank" rel="noopener" class="video-link">查看原片 ↗</a>
             </div>
             <h3>FV 泰式傳統甜點木造茶屋</h3>
-            <p class="spot-area-tag">📍 區域：嵩越路 Song Wat</p>
+            <p class="spot-area-tag">📍 區域：嵩越路 Song Wat ｜ 💰 約 240 THB</p>
             <p class="spot-desc">將泰國東北部傳統農家木屋搬進老宅二樓，主打罕見的皇室傳統甜點與冷泡香蘭葉茶，冷氣強、極好拍。</p>
           </div>
           <div class="candidate-actions">
@@ -128,14 +159,14 @@
           </div>
         </article>
 
-        <article class="candidate-card" data-spot-id="spot-nai-ek" data-spot-name="Nai Ek Roll Noodles 胡椒豬雜粿汁" data-spot-area="耀華力路唐人街">
+        <article class="candidate-card" data-spot-id="spot-nai-ek" data-spot-name="Nai Ek Roll Noodles 胡椒豬雜粿汁" data-spot-area="耀華力路唐人街" data-cost="150">
           <div>
             <div class="candidate-top">
               <span class="source-badge yt">YouTube</span>
               <a href="https://www.youtube.com/results?search_query=Nai+Ek+Roll+Noodles+Bangkok" target="_blank" rel="noopener" class="video-link">查看原片 ↗</a>
             </div>
             <h3>Nai Ek Roll Noodles 胡椒豬雜粿汁</h3>
-            <p class="spot-area-tag">📍 區域：耀華力路唐人街</p>
+            <p class="spot-area-tag">📍 區域：耀華力路唐人街 ｜ 💰 約 150 THB</p>
             <p class="spot-desc">米其林必比登推介名店，濃郁白胡椒豬骨湯搭配河粉捲與超酥脆燒肉，翻桌率極快。</p>
           </div>
           <div class="candidate-actions">
@@ -145,14 +176,14 @@
           </div>
         </article>
 
-        <article class="candidate-card" data-spot-id="spot-toasted-buns" data-spot-name="Yaowarat Toasted Buns 炭烤爆漿餐包" data-spot-area="耀華力路唐人街">
+        <article class="candidate-card" data-spot-id="spot-toasted-buns" data-spot-name="Yaowarat Toasted Buns 炭烤爆漿餐包" data-spot-area="耀華力路唐人街" data-cost="100">
           <div>
             <div class="candidate-top">
               <span class="source-badge ig">IG Reels</span>
               <a href="https://www.instagram.com/explore/tags/yaowarat/" target="_blank" rel="noopener" class="video-link">查看原片 ↗</a>
             </div>
             <h3>Yaowarat Toasted Buns 炭烤爆漿餐包</h3>
-            <p class="spot-area-tag">📍 區域：耀華力路唐人街</p>
+            <p class="spot-area-tag">📍 區域：耀華力路唐人街 ｜ 💰 約 100 THB</p>
             <p class="spot-desc">外皮炭烤到微焦酥脆、內餡飽滿爆漿，必點泰式奶茶醬與煉乳口味，記得先填單取號。</p>
           </div>
           <div class="candidate-actions">
@@ -161,41 +192,25 @@
             <button type="button" class="btn-reject">✕ 略過</button>
           </div>
         </article>
-
-        <article class="candidate-card" data-spot-id="spot-factory-coffee" data-spot-name="Factory Coffee 冠軍創意特調咖啡" data-spot-area="BTS Phaya Thai 站">
-          <div>
-            <div class="candidate-top">
-              <span class="source-badge yt">YouTube</span>
-              <a href="https://www.youtube.com/results?search_query=Factory+Coffee+Bangkok" target="_blank" rel="noopener" class="video-link">查看原片 ↗</a>
-            </div>
-            <h3>Factory Coffee 冠軍創意特調咖啡</h3>
-            <p class="spot-area-tag">📍 區域：BTS Phaya Thai 站</p>
-            <p class="spot-desc">泰國拉花與烘焙冠軍主理，桌邊現搖「Moscow」與檸檬冰美式「Supreme」為必點招牌，搭配可頌絕佳。</p>
-          </div>
-          <div class="candidate-actions">
-            <a href="https://www.google.com/maps/search/?api=1&query=Factory+Coffee+Bangkok" target="_blank" rel="noopener" class="map-btn">🗺️ 地圖</a>
-            <button type="button" class="btn-accept">＋ 納入行程</button>
-            <button type="button" class="btn-reject">✕ 略過</button>
-          </div>
-        </article>
       </div>
     </section>
 
-    <!-- 區塊三：單日預算表與行前檢查表 -->
+    <!-- 區塊三：單日預算表與行前檢查表（與區塊一即時連動） -->
     <div class="two-col-grid">
       <section class="card-section">
-        <h2 class="section-title">💰 區塊三：單日預估花費表</h2>
-        <p class="section-subtitle">以泰銖（THB）計算，夜市與渡輪建議準備百元小鈔。</p>
+        <h2 class="section-title">💰 區塊三：即時連動花費表</h2>
+        <p class="section-subtitle">隨區塊一行程增減或金額修改自動重新計算總預算（THB / TWD）。</p>
         <table class="budget-table">
           <thead>
             <tr><th>消費項目</th><th>預估金額</th></tr>
           </thead>
-          <tbody>
+          <tbody id="budget-tbody">
             <tr><td>MRT 藍線車資 ＋ 跨河渡輪船票</td><td>140 THB</td></tr>
             <tr><td>鄭王廟外國遊客門票（含礦泉水）</td><td>200 THB</td></tr>
-            <tr><td>Rongros 河景午餐 ＋ 老街咖啡</td><td>750 THB</td></tr>
-            <tr><td>唐人街夜市米其林小吃掃街</td><td>450 THB</td></tr>
-            <tr class="total-row"><td>單日總計（約合 NT$ 1,480）</td><td>1,540 THB</td></tr>
+            <tr><td>10:30 嵩越路 Song Wat Road 百年老街散步</td><td>150 THB</td></tr>
+            <tr><td>13:00 Rongros 河畔泰式料理</td><td>600 THB</td></tr>
+            <tr><td>19:00 耀華力路 Yaowarat 唐人街夜市</td><td>450 THB</td></tr>
+            <tr class="total-row"><td>單日即時總計（約合 NT$ 1,480）</td><td>1,540 THB</td></tr>
           </tbody>
         </table>
       </section>
