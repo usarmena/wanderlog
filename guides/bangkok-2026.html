@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>曼谷舊城區與昭披耶河岸漫遊｜WanderLog</title>
-  <link rel="stylesheet" href="style.css" />
+  <!-- 修正 1：加回 ../ 讀取外層的 style.css -->
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body data-guide-id="bangkok-2026">
   <div class="container">
     <nav class="top-nav">
-      <a href="index.html">← 返回探索總覽大廳</a>
+      <!-- 修正 2：加回 ../ 返回外層的 index.html -->
+      <a href="../index.html">← 返回探索總覽大廳</a>
       <span>AGENTS.md 規範頁面 ID：<code>bangkok-2026</code></span>
     </nav>
 
@@ -56,7 +58,7 @@
         </form>
       </div>
 
-      <!-- 初始預設行程（每個節點自帶專屬花費、tip 與 check，移除節點時會一併移除） -->
+      <!-- 初始預設行程 -->
       <div class="timeline" id="main-timeline">
         <div
           class="timeline-item"
@@ -107,7 +109,7 @@
         </div>
       </div>
 
-      <!-- 動態避雷提示容器（由 app.js 依據上方實際行程即時渲染） -->
+      <!-- 動態避雷提示容器 -->
       <div class="pro-tip" id="dynamic-pro-tips"></div>
     </section>
 
@@ -269,6 +271,7 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <!-- 修正 3：加回 ../ 讀取外層的 app.js -->
+  <script src="../app.js"></script>
 </body>
 </html>
