@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WanderLog｜城市探索與影音靈感攻略庫</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page-type="index">
+  <div class="container">
+    <header class="magazine-header">
+      <span class="magazine-kicker">AGENTS.md Driven Travel Hub</span>
+      <h1>WanderLog 城市探索攻略庫</h1>
+      <p>結合結構化路線時間軸與 IG Reels / YouTube 探店候選池，打造可無限擴充的個人旅遊指南。</p>
+
+      <!-- 統計資訊看板 -->
+      <div class="stats-banner">
+        <div class="stat-item">
+          <span class="stat-num" id="stat-total-guides">1</span>
+          <span class="stat-label">已收錄城市攻略</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" id="stat-upcoming">1</span>
+          <span class="stat-label">即將出發行程</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">AGENTS.md 規範相容</span>
+        </div>
+      </div>
+
+      <!-- 搜尋與地區篩選列 -->
+      <div class="controls-wrapper">
+        <div class="filter-bar">
+          <button type="button" class="filter-btn active" data-filter="all">全部攻略</button>
+          <button type="button" class="filter-btn" data-filter="overseas">海外自由行</button>
+          <button type="button" class="filter-btn" data-filter="taiwan">台灣小旅行</button>
+        </div>
+        <input type="search" id="guide-search" class="search-input" placeholder="🔍 搜尋城市、景點或關鍵字..." />
+      </div>
+    </header>
+
+    <!-- 攻略卡片列表（AI 新增頁面時會在此處頂部插入新卡片） -->
+    <main class="guide-grid" id="guide-grid">
+      <a class="guide-card" data-region="overseas" data-status="即將出發" href="guides/bangkok-2026.html">
+        <div>
+          <div class="card-badges">
+            <span class="status-badge">即將出發</span>
+            <span class="region-tag">海外自由行 · 泰國曼谷</span>
+          </div>
+          <h2>曼谷舊城區與昭披耶河岸漫遊</h2>
+          <p>串聯嵩越路百年老街、鄭王廟夕陽與耀華力路唐人街夜市，內含 4 間從 IG Reels 與 YouTube 萃取的必吃候選名單。</p>
+        </div>
+        <div class="guide-card-footer">
+          <span>📅 2026 跨年企劃</span>
+          <span>進入攻略與挑選景點 →</span>
+        </div>
+      </a>
+    </main>
+
+    <!-- 擴充教學提示區 -->
+    <section class="card-section workflow-box">
+      <h2 class="section-title">✨ 如何使用 AGENTS.md 擴充這個網站？</h2>
+      <p class="section-subtitle">本專案遵循嚴格的結構化規範，你可以透過以下兩種方式持續擴充內容：</p>
+      <div class="workflow-steps">
+        <div class="wf-step">
+          <span class="wf-num">方法 1</span>
+          <h3>交給 AI 自動生成新城市或萃取影片</h3>
+          <p>將 <code>AGENTS.md</code> 連同你想去的地點或 IG Reels / YouTube 連結貼給 AI，AI 會自動生成符合五段式結構的子頁面並更新首頁卡片。</p>
+        </div>
+        <div class="wf-step">
+          <span class="wf-num">方法 2</span>
+          <h3>在攻略頁內直接貼入 Reels / YT 靈感</h3>
+          <p>點進任一攻略頁面後，可使用內建的「快速新增影音靈感」表單即時建立候選卡片，勾選後一鍵複製排程 Prompt 交給 AI 更新時間軸。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
